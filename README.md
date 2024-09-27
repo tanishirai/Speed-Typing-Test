@@ -3,12 +3,12 @@
 Welcome to the Speed Typing Test project! This web application allows users to test their typing speed and accuracy through a simple interface. Users are presented with random passages to type, and upon submission, their results including words per minute (WPM) and accuracy percentage are displayed.
 
 ## Dependencies
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+- python -m venv venv
+- source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-pip install Flask
+- pip install Flask
 
-python app.py
+- python app.py
 
 ## Features
 
