@@ -4,7 +4,8 @@ Welcome to the Speed Typing Test project! This web application allows users to t
 
 ## Dependencies
 - python -m venv venv
-- source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+- source venv/bin/activate
+- # On Windows use `venv\Scripts\activate`
 
 - pip install Flask
 
@@ -22,7 +23,6 @@ Welcome to the Speed Typing Test project! This web application allows users to t
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Python, Flask
-- **Libraries**: None (vanilla JS used)
 
 ## Getting Started
 
