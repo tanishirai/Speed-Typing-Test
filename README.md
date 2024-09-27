@@ -1,3 +1,5 @@
+In cases of discussion and changes, contact : www.linkedin.com/in/deepti-gupta-775736289
+
 # Speed Typing Test
 
 Welcome to the Speed Typing Test project! This web application allows users to test their typing speed and accuracy through a simple interface. Users are presented with random passages to type, and upon submission, their results including words per minute (WPM) and accuracy percentage are displayed.
