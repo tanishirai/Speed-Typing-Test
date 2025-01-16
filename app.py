@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 import random
 import database
 
 app = Flask(__name__)
+app.secret_key = 'shashisingh8434thissamplesecret'
+
 
 passages = [
     "The quick brown fox jumps over the lazy dog.",
@@ -46,11 +48,13 @@ def login():
             database.initialiseNewUser(username,password)
 
             if(not database.checkUniqueUser(username)):
+                session['username'] = username 
                 return redirect(url_for('home', varUser=username))
             else:
                 return redirect(url_for('login'))
         else:
             if(database.checkUniqueUser(username)):
+                session['username'] = username 
                 return redirect(url_for('home', varUser=username))
             else:
                 return redirect(url_for('login'))
@@ -65,18 +69,32 @@ def sync():
     wpm = data.get('wpm')
     accuracy = data.get('accuracy')
 
-    # Process or store the data as needed (e.g., save to database)
-    # print(f"Sync data: Username: {username}, WPM: {wpm}, Accuracy: {accuracy}")
-
     database.uploadCurrentData(username,wpm,accuracy)
 
-    # Respond with success message
     return jsonify({'status': 'success', 'message': 'Data synced successfully'}), 200
 
 
-@app.route("/history")
+@app.route('/history', methods=['GET', 'POST'])
 def history():
-    return render_template("user_history.html")
+    username = session.get('username')
+
+    if not username:
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        data = request.get_json()
+        username = data.get('username')
+        user_exists = database.checkUniqueUser(username)
+
+        response_data = {
+            'username': username,
+            'userExists': user_exists 
+        }
+
+        return jsonify(response_data) 
+    # print(username)
+    sendingData = database.getHistory(username)
+    return render_template('user_history.html',username = username, allData = sendingData, enumerate = enumerate)
 
 if __name__ == '__main__':
     app.run(debug=True)

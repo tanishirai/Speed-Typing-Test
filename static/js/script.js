@@ -13,11 +13,44 @@ let timerInterval;
 
 const syncButton = document.getElementById('syncBtn');
 const historyButton = document.getElementById('history_button');
+const loginButton = document.getElementById('login_button');
 
+loginButton.addEventListener('click', () => {
+    window.location.href = '/login';
+});
 
 historyButton.addEventListener('click', () => {
-    window.location.href = '/history';
+    const username = document.getElementById("login_button").textContent;
+    console.log(username);
+    if (username != 'Login') {
+        fetch('/history', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username: username })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);  // Handle the JSON response data
+            
+            // Redirect to history page after successful fetch
+            if (data.userExists) {
+                window.location.href = '/history';  // Redirect to the history page
+            } else {
+                console.error("User not found in history.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);  // Handle any errors
+        });
+    }
+    else{
+        alert("Please Login first to see history!!!")
+    }
 });
+
+
 
 syncButton.addEventListener('click', () => {
     const username = document.getElementById("login_button").textContent;
