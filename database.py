@@ -30,16 +30,22 @@ def initialiseNewUser(username,password):
     }
     ref.child(username).update(newValue)
 
-def uploadCurrentData(username,wpm,accuracy):
+def uploadCurrentData(username, wpm, accuracy):
     date = formatted_datetime
     newValue = {
-        date:{
-            "wpm" : wpm,
-            "accuracy" : accuracy
+        date: {
+            "wpm": wpm,
+            "accuracy": accuracy,
         },
     }
-    if(username!="Login"):
-        ref.child(username).child("history").push(newValue)
+    try:
+        if username != "Login":
+            ref.child(username).child("history").push(newValue)
+    except firebase_admin.exceptions.UnavailableError as e:
+        print(f"Failed to upload data: {e}")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
 
 def getHistory(username):
     newData = ref.child(username).child("history").get()
