@@ -12,6 +12,12 @@ let timerStarted = false;
 let timerInterval;
 
 const syncButton = document.getElementById('syncBtn');
+const historyButton = document.getElementById('history_button');
+
+
+historyButton.addEventListener('click', () => {
+    window.location.href = '/history';
+});
 
 syncButton.addEventListener('click', () => {
     const username = document.getElementById("login_button").textContent;
