@@ -13,20 +13,31 @@
   </head>
   <body>
     <div class="login-container">
+
       <div class="login-header">Login Page</div>
-      <form>
+
+      <form action="/login" method="POST">
+
+        <div class="form-group" >
+          <input type="checkbox" id="newUser" name="newUser"> <label for="newUser">New User</label>
+        </div>
+
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" placeholder="Enter Username" onkeydown="preventSpaces(event)">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" onkeydown="preventSpaces(event)">
         </div>
+
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter Password" onkeydown="preventSpaces(event)">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" onkeydown="preventSpaces(event)">
         </div>
+
         <center>
-            <button type="submit" class="btn btn-primary">Submit</button>
+          <button id="login-submit-button" class="btn btn-primary" >Submit</button>
         </center>
+
       </form>
+      
     </div>
 
     <script src="/static/js/login.js"></script>

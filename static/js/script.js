@@ -11,6 +11,31 @@ const exitBtn = document.getElementById('exitBtn');
 let timerStarted = false;
 let timerInterval;
 
+const syncButton = document.getElementById('syncBtn');
+
+syncButton.addEventListener('click', () => {
+    const username = document.getElementById("login_button").textContent;
+    const wpm = parseFloat(resultDisplay.querySelector('.wpm').textContent);
+    const accuracy = parseFloat(resultDisplay.querySelector('.accuracy').textContent); 
+
+    // console.log(username,wpm,accuracy)
+    fetch('/sync', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: username, wpm: wpm, accuracy: accuracy })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);  // Handle the JSON response data
+    })
+    .catch(error => {
+        console.error('Error:', error);  // Handle any errors
+    });
+});
+
+
 // Function to start the timer
 function startTimer() {
     timerInterval = setInterval(() => {
@@ -36,6 +61,7 @@ typedTextArea.addEventListener('input', () => {
 function handleSubmit() {
     // Clear timer interval
     clearInterval(timerInterval);
+
     
     // Disable textarea and submit button after submission
     typedTextArea.disabled = true;
@@ -56,14 +82,17 @@ function handleSubmit() {
     .then(data => {
         const wpm = data.wpm;
         const accuracy = data.accuracy;
-
-        resultDisplay.innerHTML = `Words per minute: ${wpm.toFixed(1)}%, Accuracy: ${accuracy.toFixed(2)}%`;
+        resultDisplay.innerHTML = `
+        Words per minute: <span class="wpm">${wpm.toFixed(1)}</span> 
+        Accuracy: <span class="accuracy">${accuracy.toFixed(2)}</span> %
+        `;
         resultDisplay.style.display = 'block';
 
         // Show Start Again and Exit buttons
         actionButtons.style.display = 'block';
     });
 }
+
 
 // Function to start a new typing test
 function startTypingTest() {
