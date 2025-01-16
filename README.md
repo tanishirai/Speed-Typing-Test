@@ -7,8 +7,6 @@ Access the application here: [Speed Typing Test](https://speed-typing-test-kappa
 
 ## Dependencies
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install Flask
 python app.py
 ```
