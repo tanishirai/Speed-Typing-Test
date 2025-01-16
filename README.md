@@ -8,14 +8,13 @@ Access the application here: [Speed Typing Test](https://speed-typing-test-kappa
 
 ## Dependencies
 
-- python -m venv venv
-- source venv/bin/activate
+python -m venv venv
+source venv/bin/activate
+  
 - If error shown while running `venv/bin/activate` in terminal i.e. powershell then follow below step:
-- On Windows cmd at project folder path use `venv\Scripts\activate` to activate virtual environment for this specific project
-
-- pip install -r requirements.txt
-
-- python app.py
+On Windows cmd at project folder path use `venv\Scripts\activate` to activate virtual environment for this specific project
+pip install -r requirements.txt
+python app.py
 
 ## Features
 
