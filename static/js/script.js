@@ -57,7 +57,7 @@ function handleSubmit() {
         const wpm = data.wpm;
         const accuracy = data.accuracy;
 
-        resultDisplay.innerHTML = `Words per minute: ${wpm}, Accuracy: ${accuracy.toFixed(2)}%`;
+        resultDisplay.innerHTML = `Words per minute: ${wpm.toFixed(1)}%, Accuracy: ${accuracy.toFixed(2)}%`;
         resultDisplay.style.display = 'block';
 
         // Show Start Again and Exit buttons
