@@ -32,6 +32,14 @@ def submit():
 
     return jsonify({'wpm': wpm, 'accuracy': accuracy})
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/history")
+def history():
+    return render_template("user_history.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
 
