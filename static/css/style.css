@@ -67,7 +67,7 @@ h1 {
     margin-top: 40px;
 }
 
-#startAgainBtn, #exitBtn {
+#startAgainBtn, #exitBtn ,#syncBtn{
     padding: 10px 20px;
     font-size: 1.2em;
     margin: 10px;
@@ -79,7 +79,7 @@ h1 {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#startAgainBtn:hover, #exitBtn:hover {
+#startAgainBtn:hover, #exitBtn:hover, #syncBtn:hover{
     transform: scale(1.05);
     background-color: #0056b3;
 }
