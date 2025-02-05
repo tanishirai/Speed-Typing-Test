@@ -6,16 +6,6 @@ Welcome to the Speed Typing Test project! This web application allows users to t
 
 Access the application here: [Speed Typing Test](https://speed-typing-test-8ujcjkugb-deepti-guptas-projects.vercel.app/)
 
-## Dependencies
-
-1. python -m venv venv
-2. source venv/bin/activate
-  
-- If error shown while running `venv/bin/activate` in terminal i.e. powershell then follow below step:
-1. On Windows cmd at project folder path use `venv\Scripts\activate` to activate virtual environment for this specific project
-2. pip install -r requirements.txt
-3. python app.py
-
 ## Features
 
 - Random passages for typing practice
@@ -33,10 +23,29 @@ Access the application here: [Speed Typing Test](https://speed-typing-test-8ujcj
 
 To get started with this project, clone the repository and set up a virtual environment:
 
+### Setup
 ```
 git clone https://github.com/Deeptig9138/speed-typing-test.git
 cd speed-typing-test
+
+python -m venv venv
 ```
+
+### Activate virtual environment 
+```
+venv/Scripts/activate
+```
+
+### Install dependencies
+```
+pip install -r requirements.txt
+```
+
+### Run you flask app
+```
+python app.py
+```
+
 
 ## Contact
 
